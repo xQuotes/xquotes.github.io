@@ -3,7 +3,7 @@ module.exports = {
   // component: require('./index')['default'],
   getComponent(nextState, cb) {
     require.ensure([], (require) => {
-      cb(null, require('./index'))
+      cb(null, require('./index')['default'])
     })
   }
   // getChildRoutes(location, callback) {
