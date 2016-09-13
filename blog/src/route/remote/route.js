@@ -1,5 +1,5 @@
 module.exports = {
-  path: 'logout',
+  path: 'remote',
   // component: require('./index')['default']
   getComponent(nextState, cb) {
     require.ensure([], (require) => {

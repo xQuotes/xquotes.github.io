@@ -1,6 +1,11 @@
 module.exports = {
   path: 'v1',
-  component: require('./index'),
+  // component: require('./index')['default'],
+  getComponent(nextState, cb) {
+    require.ensure([], (require) => {
+      cb(null, require('./index'))
+    })
+  }
   // getChildRoutes(location, callback) {
   //   require.ensure([], function (require) {
   //     callback(null, [

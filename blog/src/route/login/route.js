@@ -1,6 +1,11 @@
 module.exports = {
   path: 'login',
-  component: require('./index')
+  // component: require('./index')['default']
+  getComponent(nextState, cb) {
+    require.ensure([], (require) => {
+      cb(null, require('./index'))
+    })
+  }
   // getIndexRoute(location, callback) {
   //   require.ensure([], function (require) {
   //     callback(null, require('./mainPage/route'))

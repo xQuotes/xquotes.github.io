@@ -10,7 +10,8 @@
     "deploy": "export NODE_ENV=production && node server",
     "dev": "export NODE_ENV=development && node server",
     "win": "set NODE_ENV=development && node server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --ext .js,.jsx src"
   },
   "keywords": [
     "ant",
@@ -40,6 +41,7 @@
   "devDependencies": {
     "autoprefixer": "^6.3.6",
     "babel-core": "^6.7.6",
+    "babel-eslint": "^6.1.2",
     "babel-loader": "^6.2.4",
     "babel-plugin-add-module-exports": "^0.1.4",
     "babel-plugin-antd": "^0.3.2",
@@ -58,6 +60,8 @@
     "css-loader": "^0.23.1",
     "del": "^2.2.0",
     "eslint": "^2.7.0",
+    "eslint-config-airbnb": "^10.0.1",
+    "eslint-plugin-jsx-a11y": "^2.2.1",
     "eslint-plugin-react": "^4.3.0",
     "expose-loader": "^0.7.1",
     "extract-text-webpack-plugin": "^1.0.1",

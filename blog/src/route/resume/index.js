@@ -1,3 +1,9 @@
+import {
+  Link
+} from 'react-router'
+
+import Url from 'Url'
+
 import './resume.less'
 
 export default class Resume extends React.Component {
@@ -33,7 +39,7 @@ export default class Resume extends React.Component {
               </h3>
               <div className="resume-main">
                 <div className="col-24">
-                  <h4>前端技能</h4>
+                  <h4><Link to={Url.frontend}>前端</Link>技能</h4>
                   <ul>
                     <li>追逐了三代(grunt，gulp，webpack)自动化的步骤，</li>
                     <li>追逐了前后端分离流行的两大框架（Angular.js，React.js），</li>
@@ -41,7 +47,7 @@ export default class Resume extends React.Component {
                   </ul>
                 </div>
                 <div className="col-24">
-                  <h4>后端技能</h4>
+                  <h4><Link to={Url.backend}>后端</Link>技能</h4>
                   <div>
                     <li>Node.js</li>
                     <li>PHP</li>
@@ -50,7 +56,7 @@ export default class Resume extends React.Component {
                 <div className="col-24">
                   <h4>基础能力</h4>
                   <ul>
-                    <li>追求敏捷团队开发</li>
+                    <li>追求<Link to={Url.scrum}>敏捷开发</Link></li>
                     <li>Git </li>
                   </ul>
                 </div>
@@ -70,6 +76,8 @@ export default class Resume extends React.Component {
             </div>
           </div>
           <div className="resume-footer">
+            <a href="#">Download PDF</a>
+            <a href="#">Print it</a>
           </div>
         </div>
       </div>

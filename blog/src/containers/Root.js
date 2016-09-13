@@ -24,7 +24,11 @@ const rootRoute = {
           require('../route/index/route'),
           require('../route/login/route'),
           require('../route/logout/route'),
-          require('../route/resume/route')
+          require('../route/resume/route'),
+          require('../route/remote/route'),
+          require('../route/scrum/route'),
+          require('../route/frontend/route'),
+          require('../route/backend/route')
         ])
       })
     }

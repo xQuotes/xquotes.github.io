@@ -2,3 +2,5 @@ node_modules/
 example/node_modules/
 .DS_Store
 mydoc
+npm-debug.log
+dist
