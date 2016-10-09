@@ -8,11 +8,7 @@ ReactGridLayout = WidthProvider(ReactGridLayout)
 import PicLine from './picLine'
 
 
-const layouts = [
-  {i: '0', w: 20},
-  {i: '1', w: 30},
-  {i: '2', w: 20}
-]
+const layouts = [35, 14, 32, 32, 32, 32, 32]
 
 export default class PicLines extends React.Component {
   constructor(props) {
@@ -35,12 +31,12 @@ export default class PicLines extends React.Component {
 
     layout = _.map(layouts, (v, k) => {
       return {
-        i: v.i,
-        w: v.w,
+        i: k+'',
+        w: v,
         h: 1,
         maxH: 1,
         y: 0,
-        x: _.sumBy(_.dropRight(layouts, layouts.length-k), 'w')
+        x: _.sum(_.dropRight(layouts, layouts.length-k))
       }
     })
 
@@ -60,7 +56,7 @@ export default class PicLines extends React.Component {
     layoutData[newItem.i] = newItem
     layoutDatas = _.map(layoutData, (v, k) => {
       return {
-        i: v.i,
+        i: k+'',
         w: v.w,
         h: 1,
         maxH: 1,
