@@ -152,8 +152,8 @@ var config = {
           ],
           "plugins": [
             "transform-decorators-legacy",
-            "transform-object-rest-spread",
-            "antd"
+            "transform-object-rest-spread"
+            // ['import', { libraryName: 'antd', style: 'css', }]
           ]
         },
         exclude: [node_modules_dir]
