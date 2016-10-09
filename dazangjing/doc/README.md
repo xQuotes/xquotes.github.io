@@ -16,3 +16,7 @@ cd xquotes
 npm install
 npm run dev
 ```
+
+```
+https://yiqixie.com/d/home/fcABRqt5lJaBapEXPtrLwblSi
+```
