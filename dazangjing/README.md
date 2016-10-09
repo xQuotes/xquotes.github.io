@@ -1,4 +1,4 @@
-## React-redux-starter-kit
+## 大藏经
 
 ![admin](https://raw.githubusercontent.com/xQuotes/xquotes.github.io/master/dazangjing/src/common/images/dazangjing.png)
 
