@@ -153,7 +153,7 @@ var config = {
           "plugins": [
             "transform-decorators-legacy",
             "transform-object-rest-spread",
-            // "antd"
+            "antd"
           ]
         },
         exclude: [node_modules_dir]
