@@ -21,9 +21,9 @@ var source = {
   // entryMobileJS: './src/mobile.js'
 }
 
-shell.mkdir('-p', 'dist');
+shell.mkdir('-p', '../dist');
 var build = {
-  dir: 'dist',
+  dir: '../dist',
   HTML1: {
     filename: 'index.html',
     title: 'IFOS',

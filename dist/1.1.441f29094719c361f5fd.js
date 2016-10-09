@@ -1,0 +1,2 @@
+/*! This file is created by fooying@qq.com */
+webpackJsonp([1],{151:function(n,t,e){"use strict";var o=e(28);n.exports={path:"/"+o.admin,component:e(49)["default"],getChildRoutes:function(n,t){e.e(4,function(n){t(null,[e(149)])})}}}});
