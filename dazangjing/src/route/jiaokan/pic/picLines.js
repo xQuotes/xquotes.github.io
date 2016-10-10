@@ -5,45 +5,45 @@ var WidthProvider = require('react-grid-layout').WidthProvider
 var ReactGridLayout = require('react-grid-layout')
 ReactGridLayout = WidthProvider(ReactGridLayout)
 
-import PicLine from './picLine'
-
-
-const layouts = [35, 14, 32, 32, 32, 32, 32]
-
 export default class PicLines extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      layout: [{
-        i: '0',
-        w: '20',
-        h: 1,
-        maxH: 1,
-        y: 0,
-        x: 0
-      }]
+      layout: _.map(props.layouts, (v, k) => {
+        return {
+          i: k+'',
+          w: v,
+          h: 1,
+          maxH: 1,
+          y: 0,
+          x: _.sum(_.dropRight(props.layouts, props.layouts.length-k))
+        }
+      })
     }
   }
-  // componentWillReceiveProps
-  componentWillMount() {
-    let layout = []
+  componentWillReceiveProps(nextProps) {
+    const {layouts: oldLayouts} = this.props
+    const {layouts: newLayouts} = nextProps
 
-    layout = _.map(layouts, (v, k) => {
-      return {
-        i: k+'',
-        w: v,
-        h: 1,
-        maxH: 1,
-        y: 0,
-        x: _.sum(_.dropRight(layouts, layouts.length-k))
-      }
-    })
+    if(oldLayouts != newLayouts) {
+      let layout = []
 
-    this.setState({
-      layout: layout
-    })
+      layout = _.map(newLayouts, (v, k) => {
+        return {
+          i: k+'',
+          w: v,
+          h: 1,
+          maxH: 1,
+          y: 0,
+          x: _.sum(_.dropRight(newLayouts, newLayouts.length-k))
+        }
+      })
 
+      this.setState({
+        layout: layout
+      })
+    }
   }
   onResize(layout,
                 oldItem,
@@ -61,7 +61,7 @@ export default class PicLines extends React.Component {
         h: 1,
         maxH: 1,
         y: 0,
-        x: _.sumBy(_.dropRight(layoutData, layouts.length-k), 'w')
+        x: _.sumBy(_.dropRight(layoutData, layoutData.length-k), 'w')
       }
     })
     this.setState({
@@ -83,6 +83,7 @@ export default class PicLines extends React.Component {
       onResize: that.onResize.bind(that)
     }
     const { layout } = this.state
+    const {onRemoveItem} = this.props
     
     return(
       <div className="pic-lines">
@@ -92,7 +93,7 @@ export default class PicLines extends React.Component {
           {_.map(layout, (value, key)=> {
             return <div key={value.i} className="pic-line">
               <div className="pic-line-close">
-                <Icon type="close" />
+                <Icon type="close" onClick={onRemoveItem.bind(that, value.i)}/>
               </div>
               <div className="pic-line-checkbox">
                 <Checkbox></Checkbox>

@@ -5,6 +5,26 @@ import PicBtns from './picBtns'
 import PicLines from './picLines'
 
 export default class JiaoPic extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      layouts: [35, 14, 32, 32, 32, 32, 32]
+    }
+  }
+  onAddItem() {
+    this.setState({
+      layouts: [...this.state.layouts, 30]
+    })
+  }
+  onRemoveItem(index) {
+    const {layouts} = this.state
+    let layout = _.clone(layouts)
+    console.log(layouts)
+    layout.delete(index)
+    console.log(layout)
+    console.log(layouts)
+  }
   render() {
     return(
       <div className="jiao-pic">
@@ -13,11 +33,11 @@ export default class JiaoPic extends React.Component {
         </div>
         <div className="jiao-pic-bottom">
           <div className="jiao-pic-btngroup">
-            <PicBtns />
+            <PicBtns onAddItem={::this.onAddItem}/>
           </div>
           <div className="jiao-pic-group">
             <div className="jiao-pic-rowgroup">
-              <PicLines />
+              <PicLines layouts={this.state.layouts} onRemoveItem={::this.onRemoveItem}/>
             </div>
             <div className="jiao-pic-main">
               <img className="jiao-img"
