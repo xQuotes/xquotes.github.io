@@ -1,4 +1,4 @@
-export const admin = 'a' // 利用率系统
+export const admin = '' // 利用率系统
 
 const Url = {
   ads: '/',
