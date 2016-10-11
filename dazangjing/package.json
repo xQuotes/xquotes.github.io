@@ -23,16 +23,20 @@
     "normalize.css": "^4.2.0",
     "pure-render-decorator": "^1.1.1",
     "react": "^15.3.2",
+    "react-ace": "^3.6.1",
     "react-cookie": "^0.4.8",
     "react-dom": "^15.3.2",
     "react-grid-layout": "^0.13.7",
     "react-redux": "^4.4.5",
     "react-router": "^2.0.0",
     "react-router-redux": "^4.0.5",
+    "react-umeditor": "^0.7.6",
     "redux": "^3.5.2",
     "redux-thunk": "^2.1.0",
     "reqwest": "^2.0.5",
-    "shelljs": "^0.7.4"
+    "shelljs": "^0.7.4",
+    "uxcore-mention": "^0.3.1",
+    "uxcore-tinymce": "^0.2.2"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",

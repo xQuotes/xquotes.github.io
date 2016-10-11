@@ -6,8 +6,6 @@ const Option = Select.Option
 
 import './proofread.less'
 
-// http://blog.csdn.net/yiluoak_47/article/details/7542800
-
 export default class Proofread extends React.Component {
   constructor(props) {
     super(props)
