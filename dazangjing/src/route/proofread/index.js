@@ -4,6 +4,9 @@ import {
 } from 'antd'
 const Option = Select.Option
 import {
+  Link
+} from 'react-router'
+import {
   Editor, EditorState, ContentState,
   RichUtils, Modifier, convertFromHTML
 } from 'draft-js'
@@ -274,7 +277,9 @@ export default class Proofread extends React.Component {
   render() {
     return(
       <div className="proofread">
-        <div className="proofread-header">
+        <div>
+          <Link to="/jiao"><Button>校</Button></Link>
+          <Link to="/dui"><Button>对</Button></Link>
         </div>
         <div className="proofread-main">
           <div className="editor proofread-main-editor">
