@@ -1,2 +1,2 @@
-import Index from './jiaokan/' //设置默认 '/' 首页
+import Index from './proofread/' //设置默认 '/' 首页
 export default Index
