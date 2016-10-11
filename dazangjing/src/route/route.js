@@ -7,7 +7,7 @@ module.exports = {
     require.ensure([], function (require) {
       callback(null, [
         require('./jiaokan/route'),
-        require('./proofread/route')
+        ...require('./proofread/route')
       ])
     })
   },
