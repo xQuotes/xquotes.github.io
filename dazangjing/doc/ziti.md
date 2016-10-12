@@ -1,5 +1,6 @@
 Mac OS的一些： 
 
+```
 华文细黑：STHeiti Light [STXihei] 
 华文黑体：STHeiti 
 华文楷体：STKaiti 
@@ -10,7 +11,11 @@ Mac OS的一些：
 標楷體：BiauKai 
 蘋果儷中黑：Apple LiGothic Medium 
 蘋果儷細宋：Apple LiSung Light 
+```
+
 Windows的一些： 
+
+```
 新細明體：PMingLiU 
 細明體：MingLiU 
 標楷體：DFKai-SB 
@@ -23,8 +28,11 @@ Windows的一些：
 楷体_GB2312：KaiTi_GB2312 
 微軟正黑體：Microsoft JhengHei 
 微软雅黑体：Microsoft YaHei 
-装Office会生出来的一些： 
+```
 
+装Office会生出来的一些：
+
+```
 隶书：LiSu 
 幼圆：YouYuan 
 华文细黑：STXihei 
@@ -39,3 +47,4 @@ Windows的一些：
 华文隶书：STLiti 
 华文行楷：STXingkai 
 华文新魏：STXinwei 
+```

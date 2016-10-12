@@ -4,6 +4,8 @@ import {
 const ButtonGroup = Button.Group
 const Option = Select.Option
 
+import XQEditor from '../../XQEditor/'
+
 import './text.less'
 
 export default class JiaoText extends React.Component {
@@ -42,8 +44,8 @@ export default class JiaoText extends React.Component {
             <Button type="primary">文字切列</Button>
           </ButtonGroup>
         </div>
-        <div className="jiao-text-main">
-          <Input type="textarea" rows="24"/>
+        <div className="jiao-text-main horizontal-tb">
+          <XQEditor />
         </div>
         <div className="jiao-text-bottom">
           <Button>检查</Button>

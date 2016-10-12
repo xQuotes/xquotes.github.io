@@ -1,7 +1,7 @@
 - [execCommand](http://blog.csdn.net/yiluoak_47/article/details/7542800)
 
 ```
-------分页------
+//------分页------
 菩薩戒 羯磨文
 彌勒菩薩說
 沙門玄奘奉 詔譯
@@ -26,41 +26,52 @@
 意樂。堪能思擇受菩薩戒。非唯他勸
 
 非為勝他。當知是名堅固菩薩。堪受
-------分页------
+//------分页------
 ```
+
+![richetext](https://raw.githubusercontent.com/xQuotes/xquotes.github.io/master/dazangjing/src/common/images/richetext.png)
+
 ```json
 {
     "entityMap": {},
     "blocks": [
         {
-            "key": "3otmn",
-            "text": "------分页------",
+            "key": "4ieop",
+            "text": "     菩薩戒羯磨文",
             "type": "unstyled",
             "depth": 0,
-            "inlineStyleRanges": [],
+            "inlineStyleRanges": [
+                {
+                    "offset": 6,
+                    "length": 1,
+                    "style": "purple"
+                }
+            ],
             "entityRanges": [],
             "data": {}
         },
         {
-            "key": "bfgms",
-            "text": "菩薩戒 羯磨文",
+            "key": "7nekn",
+            "text": "              彌勒菩薩說",
             "type": "unstyled",
             "depth": 0,
-            "inlineStyleRanges": [],
+            "inlineStyleRanges": [
+                {
+                    "offset": 14,
+                    "length": 1,
+                    "style": "orange"
+                },
+                {
+                    "offset": 16,
+                    "length": 1,
+                    "style": "yellow"
+                }
+            ],
             "entityRanges": [],
             "data": {}
         },
         {
-            "key": "1r9sk",
-            "text": "彌勒菩薩說",
-            "type": "unstyled",
-            "depth": 0,
-            "inlineStyleRanges": [],
-            "entityRanges": [],
-            "data": {}
-        },
-        {
-            "key": "d34g4",
+            "key": "81jik",
             "text": "沙門玄奘奉 詔譯",
             "type": "unstyled",
             "depth": 0,
@@ -69,7 +80,7 @@
             "data": {}
         },
         {
-            "key": "60gk7",
+            "key": "cehjg",
             "text": "受戒羯磨第一",
             "type": "unstyled",
             "depth": 0,
@@ -78,7 +89,7 @@
             "data": {}
         },
         {
-            "key": "79ppo",
+            "key": "dfpl8",
             "text": "若諸菩薩欲學菩薩三聚淨戒。或是",
             "type": "unstyled",
             "depth": 0,
@@ -87,7 +98,7 @@
             "data": {}
         },
         {
-            "key": "f3o22",
+            "key": "bg6f9",
             "text": "在家或是出家。先於無上正等菩提",
             "type": "unstyled",
             "depth": 0,
@@ -96,7 +107,7 @@
             "data": {}
         },
         {
-            "key": "e3aan",
+            "key": "d8l7t",
             "text": "發弘願已。當審訪求同法菩薩。已發",
             "type": "unstyled",
             "depth": 0,
@@ -105,7 +116,7 @@
             "data": {}
         },
         {
-            "key": "c3kvu",
+            "key": "eqd8a",
             "text": "大願有智有力。於語表義能授能開。",
             "type": "unstyled",
             "depth": 0,
@@ -114,7 +125,7 @@
             "data": {}
         },
         {
-            "key": "f25am",
+            "key": "64m73",
             "text": "於如是等功德具足。勝菩薩所先禮",
             "type": "unstyled",
             "depth": 0,
@@ -123,7 +134,7 @@
             "data": {}
         },
         {
-            "key": "4i6ll",
+            "key": "e27ec",
             "text": "雙足。偏袒右肩膝輪據地。合掌恭",
             "type": "unstyled",
             "depth": 0,
@@ -132,7 +143,7 @@
             "data": {}
         },
         {
-            "key": "e8sjs",
+            "key": "b0pcl",
             "text": "敬如是請言",
             "type": "unstyled",
             "depth": 0,
@@ -141,7 +152,7 @@
             "data": {}
         },
         {
-            "key": "9hppu",
+            "key": "1v9p5",
             "text": "大德憶念我如是名。於大德所乞受",
             "type": "unstyled",
             "depth": 0,
@@ -150,7 +161,7 @@
             "data": {}
         },
         {
-            "key": "3cfid",
+            "key": "4tj07",
             "text": "一切菩薩淨戒。唯願須臾不辭勞倦。",
             "type": "unstyled",
             "depth": 0,
@@ -159,7 +170,7 @@
             "data": {}
         },
         {
-            "key": "5qanb",
+            "key": "f8o0p",
             "text": "哀慜聽授〈第二第三亦如是說〉既作如是無倒",
             "type": "unstyled",
             "depth": 0,
@@ -168,7 +179,7 @@
             "data": {}
         },
         {
-            "key": "1f63i",
+            "key": "eb08u",
             "text": "請已。偏袒右肩恭敬禮拜。供養十方",
             "type": "unstyled",
             "depth": 0,
@@ -177,7 +188,7 @@
             "data": {}
         },
         {
-            "key": "7n3vl",
+            "key": "4s1om",
             "text": "三世諸佛世尊。已入大地得大智慧",
             "type": "unstyled",
             "depth": 0,
@@ -186,7 +197,7 @@
             "data": {}
         },
         {
-            "key": "a2ov3",
+            "key": "269oj",
             "text": "得大神通。諸菩薩眾。現前專念彼諸",
             "type": "unstyled",
             "depth": 0,
@@ -195,7 +206,7 @@
             "data": {}
         },
         {
-            "key": "7pvbc",
+            "key": "eltf6",
             "text": "功德生殷淨心",
             "type": "unstyled",
             "depth": 0,
@@ -204,7 +215,7 @@
             "data": {}
         },
         {
-            "key": "8hoh6",
+            "key": "ep9m3",
             "text": "若諸菩薩。欲授菩薩菩薩戒時。先應",
             "type": "unstyled",
             "depth": 0,
@@ -213,7 +224,7 @@
             "data": {}
         },
         {
-            "key": "d0m4k",
+            "key": "2f3st",
             "text": "為說菩薩法藏摩呾理迦。菩薩學處",
             "type": "unstyled",
             "depth": 0,
@@ -222,7 +233,7 @@
             "data": {}
         },
         {
-            "key": "demg5",
+            "key": "9t1ms",
             "text": "及犯處相。令其聽受。以慧觀察自所",
             "type": "unstyled",
             "depth": 0,
@@ -231,7 +242,7 @@
             "data": {}
         },
         {
-            "key": "dtg7t",
+            "key": "elqrd",
             "text": "意樂。堪能思擇受菩薩戒。非唯他勸",
             "type": "unstyled",
             "depth": 0,
@@ -240,7 +251,7 @@
             "data": {}
         },
         {
-            "key": "5ifb8",
+            "key": "9oim2",
             "text": "",
             "type": "unstyled",
             "depth": 0,
@@ -249,17 +260,8 @@
             "data": {}
         },
         {
-            "key": "2pch9",
+            "key": "3t869",
             "text": "非為勝他。當知是名堅固菩薩。堪受",
-            "type": "unstyled",
-            "depth": 0,
-            "inlineStyleRanges": [],
-            "entityRanges": [],
-            "data": {}
-        },
-        {
-            "key": "2v02j",
-            "text": "------分页------",
             "type": "unstyled",
             "depth": 0,
             "inlineStyleRanges": [],
