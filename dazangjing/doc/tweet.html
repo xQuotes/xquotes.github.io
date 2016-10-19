@@ -1,7 +1,9 @@
 <!--
 Copyright (c) 2013-present, Facebook, Inc. All rights reserved.
+
 This file provided by Facebook is for non-commercial testing and evaluation
 purposes only. Facebook reserves all rights not expressly granted.
+
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
@@ -13,15 +15,16 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Draft • Decorators</title><link href="https://cdn.bootcss.com/draft-js/0.9.1/Draft.min.css" rel="stylesheet">
+    <title>Draft • Decorators</title>
+    <link href="http://cdn.bootcss.com/draft-js/0.9.1/Draft.css" rel="stylesheet">
   </head>
   <body>
     <div id="target"></div>
-    <script src="https://cdn.bootcss.com/react/15.3.2/react.min.js"></script>
-    <script src="https://cdn.bootcss.com/react/15.3.2/react-dom.min.js"></script>
-    <script src="https://cdn.bootcss.com/immutable/3.8.1/immutable.min.js"></script>
-    <script src="https://cdn.bootcss.com/es6-shim/0.35.1/es6-shim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script><script src="https://cdn.bootcss.com/draft-js/0.9.1/Draft.min.js"></script>
+    <script src="http://cdn.bootcss.com/react/15.3.2/react.js"></script>
+    <script src="http://cdn.bootcss.com/react/15.3.2/react-dom.js"></script><script src="http://cdn.bootcss.com/immutable/3.8.1/immutable.js"></script>
+    <script src="http://cdn.bootcss.com/es6-shim/0.35.1/es6-shim.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script>
+    <script src="http://cdn.bootcss.com/draft-js/0.9.1/Draft.js"></script>
     <script type="text/babel">
       'use strict';
 
@@ -80,11 +83,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       const HANDLE_REGEX = /\@[\w]+/g;
       const HASHTAG_REGEX = /\#[\w\u0590-\u05ff]+/g;
 
-      function handleStrategy(contentState, contentBlock, callback) {
+      function handleStrategy(contentBlock, callback) {
         findWithRegex(HANDLE_REGEX, contentBlock, callback);
       }
 
-      function hashtagStrategy(contentState, contentBlock, callback) {
+      function hashtagStrategy(contentBlock, callback) {
         findWithRegex(HASHTAG_REGEX, contentBlock, callback);
       }
 
@@ -100,9 +103,9 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       const HandleSpan = (props) => {
         return (
           <span
+            {...props}
             style={styles.handle}
-            data-offset-key={props.offsetKey}
-          >
+            data-offset-key={props.offsetKey}>
             {props.children}
           </span>
         );
@@ -111,9 +114,9 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       const HashtagSpan = (props) => {
         return (
           <span
+            {...props}
             style={styles.hashtag}
-            data-offset-key={props.offsetKey}
-          >
+            data-offset-key={props.offsetKey}>
             {props.children}
           </span>
         );

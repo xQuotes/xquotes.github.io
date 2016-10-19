@@ -1,8 +1,10 @@
 export default class Index extends React.Component {
+  constructor(props) {
+    super(props)
+  }
   render() {
     return(
       <div>
-        {/*<Dashboard {...this.props}/>*/}
         {this.props.children}
       </div>
       )

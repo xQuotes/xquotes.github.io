@@ -4,4 +4,7 @@ module.exports = [{
 }, {
   path: 'rich',
   component: require('./rich')['default']
+}, {
+  path: 'demo',
+  component: require('./demo')['default']
 }]

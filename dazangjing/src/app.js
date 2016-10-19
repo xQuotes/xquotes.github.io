@@ -1,11 +1,10 @@
-import './style/app.less'
+import "./style/app.less"
 
-import Root from './base/containers/index'
+import Root from './containers/index'
 
-import configureStore from './base/store/configureStore'
-const store = configureStore()
+import UserStore from './stores/UserStore'
 
 ReactDOM.render(
-  (<Root store={store} />),
+  (<Root userStore={UserStore.fromJS()}/>),
   document.getElementById('react')
 )

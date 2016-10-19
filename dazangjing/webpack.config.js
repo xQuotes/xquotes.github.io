@@ -1,14 +1,14 @@
-var webpack = require('webpack');
-var path = require('path');
-var shell = require('shelljs');
-var WebpackMd5Hash = require('webpack-md5-hash');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
-var TransferWebpackPlugin = require('transfer-webpack-plugin');
-var OpenBrowserPlugin = require('open-browser-webpack-plugin');
+var webpack = require('webpack')
+var path = require('path')
+var shell = require('shelljs')
+var WebpackMd5Hash = require('webpack-md5-hash')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var WebpackCleanupPlugin = require('webpack-cleanup-plugin')
+var TransferWebpackPlugin = require('transfer-webpack-plugin')
+var OpenBrowserPlugin = require('open-browser-webpack-plugin')
 
-var node_modules_dir = path.resolve(__dirname, 'node_modules');
+var node_modules_dir = path.resolve(__dirname, 'node_modules')
 
 /* 
  * 用于分析模块的共用代码
@@ -17,29 +17,23 @@ var node_modules_dir = path.resolve(__dirname, 'node_modules');
 var httpUrl = 'http://dev.ifos.ifengidc.com:3002'
 
 var source = {
-  entryAppJS: './src/app.js',
-  // entryMobileJS: './src/mobile.js'
+  entryAppJS: './src/app.js'
 }
 
-shell.mkdir('-p', '../dist');
+shell.mkdir('-p', 'dist')
 var build = {
-  dir: '../dist',
+  dir: 'dist',
   HTML1: {
     filename: 'index.html',
     title: 'IFOS',
     template: 'index.ejs'
-  },
-  // HTML2: {
-  //   filename: 'mobile.html',
-  //   title: '',
-  //   template: 'mobile.ejs'
-  // }
+  }
 }
 
 var isProduction = function () {
-  console.log(process.env.NODE_ENV);
-  console.log(process.env.DEVICE);
-  return process.env.NODE_ENV === 'production';
+  console.log(process.env.NODE_ENV)
+  console.log(process.env.DEVICE)
+  return process.env.NODE_ENV === 'production'
 }
 
 var plugins = [
@@ -69,25 +63,15 @@ var plugins = [
     chunks: ['vendors', 'app'],
     inject: 'body'
   }),
-  // new HtmlWebpackPlugin({
-  //   filename: build.HTML2.filename,
-  //   title: build.HTML2.title,
-  //   template: build.HTML2.template,
-  //   chunks: ['vendors', 'mobile'],
-  //   inject: 'body'
-  // }),
   new TransferWebpackPlugin([
     {from: 'json'}
   ], path.resolve(__dirname,'')),
   new OpenBrowserPlugin({ url: httpUrl })
-];
+]
 
 var entryApp = [
     path.resolve(__dirname, source.entryAppJS)
-  ];
-// var entryMobile = [
-//     path.resolve(__dirname, source.entryMobileJS)
-//   ];
+  ]
 
 if( isProduction() ) {
   plugins.push(
@@ -109,19 +93,19 @@ if( isProduction() ) {
         warnings: false
       },
     })
-  );
+  )
 } else {
   entryApp.push(
     'webpack/hot/dev-server',
     'webpack-dev-server/client?'+httpUrl
-  );
+  )
   // entryMobile.push(
   //   'webpack/hot/dev-server',
   //   'webpack-dev-server/client?'+httpUrl
-  // );
+  // )
 }
 
-var public_path = isProduction() ? '/dist/' : '/'
+var public_path = isProduction() ? '/' : '/'
 
 var config = {
   entry: {
@@ -129,10 +113,8 @@ var config = {
     // mobile: entryMobile,
     vendors: [
       'react',
-      'react-router',
-      'react-router-redux',
-      'react-redux'],
-    common: ['Utils', 'Url', 'Api', 'Auth']
+      'react-router'],
+    common: ['Utils', 'Url', 'Api', 'Auth', 'Arr','Fetch']
   },
   output: {
     path: path.resolve(__dirname, build.dir),
@@ -152,8 +134,8 @@ var config = {
           ],
           "plugins": [
             "transform-decorators-legacy",
-            "transform-object-rest-spread"
-            // ['import', { libraryName: 'antd', style: 'css', }]
+            "transform-object-rest-spread",
+            // "antd"
           ]
         },
         exclude: [node_modules_dir]
@@ -183,14 +165,14 @@ var config = {
       //后续直接 require('Utils') 即可
       Utils : path.resolve(__dirname, './src/common/utils/utils.js'),
       Arr: path.resolve(__dirname, './src/common/utils/array.js'),
+      Fetch: path.resolve(__dirname, './src/common/utils/fetch.js'),
+      Auth : path.resolve(__dirname, './src/common/utils/auth.js'),
       Url : path.resolve(__dirname, './src/route/url.js'),
-      Api : path.resolve(__dirname, './src/api/index.js'),
-      Auth : path.resolve(__dirname, './src/common/utils/auth.js')
+      Api : path.resolve(__dirname, './src/api/index.js')
     }
   },
   plugins: plugins,
   devtool: isProduction() ? null : 'source-map'
 }
 
-module.exports = config;
-
+module.exports = config

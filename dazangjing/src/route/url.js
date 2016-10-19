@@ -1,11 +1,11 @@
-export const admin = '' // 利用率系统
+export const admin = ''
 
 const Url = {
   ads: '/',
   index: `/${admin}`,
   login: '/login',
   logout: '/logout',
-  register: '/register',
+  register: '/register'
 }
 
 export default Url

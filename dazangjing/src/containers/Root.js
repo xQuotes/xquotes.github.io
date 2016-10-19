@@ -1,41 +1,38 @@
 import {
-  connect
-} from 'react-redux'
-import {
-  Router,
-  browserHistory,
-  createbrowserHistory
+  Router
 } from 'react-router'
+import {
+  Provider
+} from 'mobx-react'
 
 import App from './App'
+import routes from '../route/route'
 
 const rootRoute = {
   childRoutes: [{
     path: '/',
     component: App,
     indexRoute: {
-      component: require('../../route/index')['default']
+      component: require('../route/index')['default']
     },
     scrollBehavior: "scrollToTop",
     getChildRoutes(location, callback) {
       require.ensure([], function (require) {
-        callback(null, [
-          require('../../route/route')
-        ])
+        callback(null, routes)
       })
     }
   }]
 }
 
-@connect((state)=>({}))
 export default class Root extends React.Component {
   constructor(props) {
     super(props)
   }
   render() {
-    const { history } = this.props
     return(
-      <Router history={history} routes={rootRoute}/>
+      <Provider userStore={this.props.userStore}>
+        <Router routes={rootRoute} history={this.props.history}/>
+      </Provider>
       )
   }
 }

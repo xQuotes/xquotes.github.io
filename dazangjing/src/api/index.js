@@ -1,8 +1,8 @@
-const api = '/api';
+const api = '/db/mobx'
 
 const Api = {
-  login: `${api}/user/login`,
-  logout: `${api}/user/logout`,
+  login: `${api}/signin`,
+  register: `${api}/signup`
 }
 
 export default Api

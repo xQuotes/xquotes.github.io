@@ -1,9 +1,8 @@
-## 大藏经
+# React mobx Starter Kit
 
-![admin](https://raw.githubusercontent.com/xQuotes/xquotes.github.io/master/dazangjing/src/common/images/dazangjing.png)
+## develop web app
 
 ### Features
-- [ANTD](http://ant.design/)
 
 ## Requirements
 
@@ -13,8 +12,8 @@
 ## Getting Started
 
 ```
-git clone git@github.com:xQuotes/dazangjing.git
-cd dazangjing
+git clone https://github.com/xQuotes/react-redux-starter-kit.git
+cd react-redux-starter-kit
 npm install
 npm run dev
 ```
@@ -29,13 +28,7 @@ Child html-webpack-plugin for "index.html":
         [0] ./~/html-webpack-plugin/lib/loader.js!./index.ejs 955 bytes {0}
         [1] ./~/lodash/lodash.js 511 kB {0}
         [2] (webpack)/buildin/module.js 251 bytes {0}
-Child html-webpack-plugin for "mobile.html":
-          Asset    Size  Chunks       Chunk Names
-    mobile.html  548 kB       0
-    chunk    {0} mobile.html 512 kB
-        [0] ./~/html-webpack-plugin/lib/loader.js!./mobile.ejs 671 bytes {0}
-        [1] ./~/lodash/lodash.js 511 kB {0}
-        [2] (webpack)/buildin/module.js 251 bytes {0}
+......
 webpack: bundle is now VALID.
 ```
 
@@ -47,11 +40,10 @@ localhost:3002
 ## Features
 
 * react
-* redux
+* mobx
 * react-router
-* react-router-redux
 
-* redux-devtools
+* mobx-react-devtools
 * webpack
 * babel
 * classnames
