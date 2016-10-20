@@ -1,0 +1,70 @@
+.jiao-pic {
+  padding: 5px;
+}
+.jiao-pic-top {
+  margin-top: 10px;
+  /*height: 40px;*/
+  /*background-color: yellow;*/
+}
+.jiao-pic-btngroup {
+  margin-top: 10px;
+  /*height: 30px;*/
+  text-align: right;
+}
+.pic-btns-group {
+  .ant-btn {
+    margin-right: 10px;
+  }
+}
+.jiao-pic-group {
+  position: relative;
+  /*overflow: hidden;*/
+  width: 100%;
+  margin-top: 10px;
+  .jiao-pic-rowgroup {
+    position: absolute;
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    .pic-lines {
+      display: block;
+      width: 800px;
+      height: 100%;
+      margin: 0 auto;
+      position: relative;
+    }
+    .pic-line {
+      display: inline-block;
+      border-left-width: 1px;
+      border-left-style: solid;
+      height: 100%;
+      background-color: rgba(22, 22, 22, .2);
+      text-align: center;
+      color: #000;
+      /*float: right;*/
+      &:hover {
+        background-color: rgba(45,183,245, .2);
+      }
+    }
+    .pic-line-checkbox, .pic-line-close, .pic-line-num {
+      cursor: pointer;
+      line-height: 20px;
+    }
+  }
+  .jiao-pic-main {
+    padding-top: 60px;
+    width: 100%;
+    z-index: 990;
+    .jiao-img {
+      width: 800px;
+      margin: 0 auto;
+      display: block;
+    }
+  }
+}
+
+.react-resizable-handle {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
