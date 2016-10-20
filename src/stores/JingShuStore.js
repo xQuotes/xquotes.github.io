@@ -26,6 +26,22 @@ export default class JingShuStore {
     })
   }
 
+  @action putTextServer(formData) {
+    this.isLoading = true
+    Fetch({
+      url: Api.putJingShuText,
+      data: formData,
+      method: 'put',
+      success: (data) => {
+        this.isLoading = false
+        console.log(data)
+      }
+    })
+  }
+
+  saveText(formData) {
+    this.text = formData.text
+  }
   static fromJS() {
     const jingShuStore = new JingShuStore()
     return jingShuStore

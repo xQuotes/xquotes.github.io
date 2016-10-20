@@ -5,7 +5,7 @@ import {
 import {
   Editor, convertToRaw, RichUtils, 
   EditorState, ContentState,
-  Modifier, convertFromHTML
+  Modifier, convertFromHTML, convertFromRaw
 } from 'draft-js'
 import {
   Button
@@ -17,23 +17,27 @@ import './xqeditor.less'
 export default class XQEditor extends React.Component {
   constructor(props) {
     super(props)
-    console.log(props.html)
-    console.log(props.html.text)
-    let text = ''
+
     this.state = {
       // family: 'Microsoft YaHei',
       // lineHeight: 60,
       // letterSpacing: 1,
-      // EditorState.createEmpty()
+      // editorState: EditorState.createEmpty()
       editorState: EditorState.createWithContent(
-        ContentState.createFromBlockArray(
-          convertFromHTML(text)
-        )
+        convertFromRaw(props.html)
+        // ContentState.createFromBlockArray(
+        //   convertFromHTML(props.html)
+        // )
       )
     }
 
     this.focus = () => this.refs.xqeditor.focus()
-    this.onChange = (editorState) => this.setState({editorState})
+    this.onChange = (editorState) => {
+      const content = editorState.getCurrentContent()
+      this.props.onClick(convertToRaw(content))
+
+      this.setState({editorState})
+    }
     this.logState = () => {
       const content = this.state.editorState.getCurrentContent()
       console.log(content.getPlainText())
