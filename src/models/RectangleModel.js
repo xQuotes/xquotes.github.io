@@ -2,7 +2,7 @@ import {observable} from 'mobx';
 
 export default class RectangleModel {
   store;
-  i;
+  id;
   @observable w;
   @observable h;
   @observable maxH;
@@ -13,7 +13,7 @@ export default class RectangleModel {
 
   constructor(store, i, w, h, maxH, y, x, del) {
     this.store = store;
-    this.i = i;
+    this.id = id;
     this.w = w;
     this.h = h;
     this.maxH = maxH;
@@ -27,26 +27,30 @@ export default class RectangleModel {
     this.del = !this.del
   }
 
-  setTitle(w) {
-    this.w = w
+  update(formData) {
+    this.w = formData.w || this.w;
+    this.h = formData.h || this.h;
+    this.maxH = formData.maxH || this.maxH;
+    this.y = formData.y || this.y;
+    this.x = formData.x || this.x;
   }
 
   toJS() {
     return {
-      i = this.i;
-      w = this.w;
-      h = this.h;
-      maxH = this.maxH;
-      y = this.y;
-      x = this.x;
-      del = this.del;
+      id: this.id,
+      w: this.w,
+      h: this.h,
+      maxH: this.maxH,
+      y: this.y,
+      x: this.x,
+      del: this.del,
     }
   }
 
   static fromJS(store, object) {
     return new RectangleModel(
       store,
-      object.i,
+      object.id,
       object.w,
       object.h,
       object.maxH,
