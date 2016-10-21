@@ -1,9 +1,6 @@
 import {
   Router
 } from 'react-router'
-import {
-  Provider
-} from 'mobx-react'
 
 import App from './App'
 import routes from '../route/route'
@@ -30,9 +27,7 @@ export default class Root extends React.Component {
   }
   render() {
     return(
-      <Provider userStore={this.props.userStore}>
-        <Router routes={rootRoute} history={this.props.history}/>
-      </Provider>
+      <Router routes={rootRoute} history={this.props.history}/>
       )
   }
 }

@@ -25,7 +25,7 @@ var build = {
   dir: 'dist',
   HTML1: {
     filename: 'index.html',
-    title: 'IFOS',
+    title: '大藏经',
     template: 'index.ejs'
   }
 }

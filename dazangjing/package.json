@@ -30,9 +30,9 @@
     "normalize.css": "^4.0.0",
     "object-assign": "~4.0.1",
     "pure-render-decorator": "^1.1.0",
-    "react": "^0.14.7",
+    "react": "^15.3.2",
     "react-cookie": "^0.4.8",
-    "react-dom": "^0.14.7",
+    "react-dom": "^15.3.2",
     "react-grid-layout": "^0.13.9",
     "reqwest": "^2.0.5"
   },

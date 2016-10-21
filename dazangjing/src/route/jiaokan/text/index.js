@@ -1,4 +1,10 @@
 import {
+  toJS
+} from 'mobx'
+import {
+  inject, observer
+} from 'mobx-react'
+import {
   Button, Select, Input
 } from 'antd'
 const ButtonGroup = Button.Group
@@ -6,10 +12,29 @@ const Option = Select.Option
 
 import XQEditor from '../../XQEditor/'
 
-import './text.less'
 
+import './text.less'
+@inject("jingShuStore") @observer
 export default class JiaoText extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+  componentDidMount() {
+    const { jingShuStore } = this.props
+    jingShuStore.getTextServer()
+  }
+  handleSubmit() {
+    const { jingShuStore } = this.props
+    const text = toJS(jingShuStore).text
+    jingShuStore.putTextServer({text})
+  }
+  onClick(text) {
+    const { jingShuStore } = this.props
+    jingShuStore.saveText({text})
+  }
   render() {
+    const {jingShuStore} = this.props
+
     return(
       <div className="jiao-text">
         <div className="jiao-text-top">
@@ -45,11 +70,13 @@ export default class JiaoText extends React.Component {
           </ButtonGroup>
         </div>
         <div className="jiao-text-main horizontal-tb">
-          <XQEditor />
+          {
+            jingShuStore.text && <XQEditor html={jingShuStore.text} onClick={::this.onClick}/>
+          }
         </div>
         <div className="jiao-text-bottom">
           <Button>检查</Button>
-          <Button type="primary">保存</Button>
+          <Button type="primary" onClick={::this.handleSubmit}>保存</Button>
           <Button type="ghost">提交</Button>
         </div>
       </div>

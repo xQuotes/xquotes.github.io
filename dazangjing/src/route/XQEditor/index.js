@@ -1,7 +1,11 @@
 import {
+  inject, observer
+} from 'mobx-react'
+
+import {
   Editor, convertToRaw, RichUtils, 
   EditorState, ContentState,
-  Modifier, convertFromHTML
+  Modifier, convertFromHTML, convertFromRaw
 } from 'draft-js'
 import {
   Button
@@ -9,7 +13,7 @@ import {
 var ButtonGroup = Button.Group
 
 import './xqeditor.less'
-
+@observer
 export default class XQEditor extends React.Component {
   constructor(props) {
     super(props)
@@ -18,16 +22,22 @@ export default class XQEditor extends React.Component {
       // family: 'Microsoft YaHei',
       // lineHeight: 60,
       // letterSpacing: 1,
-      editorState: EditorState.createEmpty()
-      // EditorState.createWithContent(
-      //   ContentState.createFromBlockArray(
-      //     convertFromHTML(props.html)
-      //   )
-      // )
+      // editorState: EditorState.createEmpty()
+      editorState: EditorState.createWithContent(
+        convertFromRaw(props.html)
+        // ContentState.createFromBlockArray(
+        //   convertFromHTML(props.html)
+        // )
+      )
     }
 
     this.focus = () => this.refs.xqeditor.focus()
-    this.onChange = (editorState) => this.setState({editorState})
+    this.onChange = (editorState) => {
+      const content = editorState.getCurrentContent()
+      this.props.onClick(convertToRaw(content))
+
+      this.setState({editorState})
+    }
     this.logState = () => {
       const content = this.state.editorState.getCurrentContent()
       console.log(content.getPlainText())
@@ -48,11 +58,6 @@ export default class XQEditor extends React.Component {
     return(
       <div className="xqeditor" onClick={this.focus}>
         <button onClick={this.logState}>获取数据</button>
-        <ButtonGroup>
-          <Button disabled>L</Button>
-          <Button disabled>M</Button>
-          <Button disabled>R</Button>
-        </ButtonGroup>
         <Editor
           handleKeyCommand={::this.handleKeyCommand}
           editorState={editorState}

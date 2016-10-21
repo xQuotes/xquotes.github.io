@@ -82,7 +82,7 @@ export function hashtagStrategy(contentBlock, callback) {
 }
 
 function findWithRegex(regex, contentBlock, callback) {
-  console.log(contentBlock.getText())
+  // console.log(contentBlock.getText())
   const text = contentBlock.getText();
   let matchArr, start;
   while ((matchArr = regex.exec(text)) !== null) {

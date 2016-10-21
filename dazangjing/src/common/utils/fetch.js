@@ -14,6 +14,7 @@ export default function fetching(action) {
     contentType: 'application/json',
     headers: {
       AuthToken: Auth.getAuthCookie('UserIfosSession') || '',
+      authorization: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1ODA1OTQ5ODIyZmI0OTMyZjkwNDg2YTMiLCJpYXQiOjE0NzcwMTY0MDR9.8rzl6mUykd2biFelHUdcxOipqqXooOncLPo8tjgC_d8'
     },
     data: JSON.stringify(action.data),
     type: 'json',

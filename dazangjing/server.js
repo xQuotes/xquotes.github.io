@@ -10,8 +10,9 @@ var server = new webpackDevServer(compiler, {
   inline: true,
   historyApiFallback: true,
   proxy: {
-    '/db/mobx/*': {
+    '/db/jingshu/*': {
       target: 'http://localhost:4000',
+      // http://georgebbbb-flaming.daoapp.io
       // port: "8080",
       secure: false
     }
