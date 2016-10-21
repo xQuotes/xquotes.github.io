@@ -52,7 +52,10 @@ export default class PicLines extends React.Component {
                 e,
                 element) {
     let layoutData = layout,
-    layoutDatas = []
+    layoutDatas = [];
+    console.log(layoutData)
+    console.log(newItem)
+    console.log(oldItem)
     layoutData[newItem.i] = newItem
     layoutDatas = _.map(layoutData, (v, k) => {
       return {
