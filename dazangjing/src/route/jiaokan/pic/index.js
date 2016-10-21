@@ -1,15 +1,24 @@
+import {
+  toJS
+} from 'mobx'
+import {
+  inject, observer
+} from 'mobx-react'
+
 import './pic.less'
 
 import PicList from './picList'
 import PicBtns from './picBtns'
 import PicLines from './picLines'
 
+@inject("rectangleStore") @observer
 export default class JiaoPic extends React.Component {
   constructor(props) {
     super(props)
 
+    console.log(props.rectangleStore)
     this.state = {
-      layouts: [35, 14, 32, 32, 32, 32, 32]
+      layouts: []
     }
   }
   onAddItem() {
@@ -17,15 +26,22 @@ export default class JiaoPic extends React.Component {
       layouts: [...this.state.layouts, 30]
     })
   }
+  componentDidMount() {
+    const { rectangleStore } = this.props
+    rectangleStore.getImageServer()
+  }
+  handleSubmit() {
+    const { rectangleStore } = this.props
+
+  }
   onRemoveItem(index) {
     const {layouts} = this.state
     let layout = _.clone(layouts)
-    console.log(layouts)
     layout.delete(index)
-    console.log(layout)
-    console.log(layouts)
   }
   render() {
+    const {rectangleStore} = this.props
+    console.log(toJS(rectangleStore.rectangles))
     return(
       <div className="jiao-pic">
         <div className="jiao-pic-top">
@@ -37,7 +53,7 @@ export default class JiaoPic extends React.Component {
           </div>
           <div className="jiao-pic-group">
             <div className="jiao-pic-rowgroup">
-              <PicLines layouts={this.state.layouts} onRemoveItem={::this.onRemoveItem}/>
+              {rectangleStore.rectangles.length && <PicLines layouts={rectangleStore.rectangles} onRemoveItem={::this.onRemoveItem}/>}
             </div>
             <div className="jiao-pic-main">
               <img className="jiao-img"

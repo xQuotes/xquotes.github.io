@@ -34,7 +34,7 @@ export default class JiaoText extends React.Component {
   }
   render() {
     const {jingShuStore} = this.props
-
+    console.log(jingShuStore.text)
     return(
       <div className="jiao-text">
         <div className="jiao-text-top">
