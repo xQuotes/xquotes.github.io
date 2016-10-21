@@ -51,21 +51,29 @@ export default class PicLines extends React.Component {
                 placeholder,
                 e,
                 element) {
-    let layoutData = layout,
-    layoutDatas = []
-    layoutData[newItem.i] = newItem
-    layoutDatas = _.map(layoutData, (v, k) => {
-      return {
-        i: k+'',
-        w: v.w,
-        h: 1,
-        maxH: 1,
-        y: 0,
-        x: _.sumBy(_.dropRight(layoutData, layoutData.length-k), 'w')
-      }
-    })
+    let layoutData = _.clone(layout)
+    let nowItem = layout[parseInt(newItem.i)]
+    let lastItem = layout[parseInt(newItem.i)+1]
+
+    if (!!lastItem && newItem.w - oldItem.w < lastItem.w) {
+      layoutData[parseInt(newItem.i)+1].x = lastItem.x + (newItem.w - oldItem.w)
+      layoutData[parseInt(newItem.i)+1].w = lastItem.w - (newItem.w - oldItem.w)
+    }
+
+    // layoutDatas[newItem.i] = newItem
+    // layoutDatas = layoutData
+    // _.map(layoutData, (v, k) => {
+    //   return {
+    //     i: k+'',
+    //     w: v.w,
+    //     h: 1,
+    //     maxH: 1,
+    //     y: 0,
+    //     x: _.sumBy(_.dropRight(layoutData, layoutData.length-k), 'w')
+    //   }
+    // })
     this.setState({
-      layout: layoutDatas
+      layout: layoutData
     })
 
   }
@@ -80,7 +88,7 @@ export default class PicLines extends React.Component {
       margin: [0, 0],
       padding: [0, 0],
       isDraggable: false,
-      onResize: that.onResize.bind(that)
+      onResizeStop: that.onResize.bind(that)
     }
     const { layout } = this.state
     const {onRemoveItem} = this.props

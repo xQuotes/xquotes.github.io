@@ -7,3 +7,13 @@ export function createReducer (initialState, handlers) {
         }
     }
 }
+
+export function convertText(text, Draft) {
+  if(_.isString(text)) {
+    return Draft.ContentState.createFromBlockArray(
+      Draft.convertFromHTML(text)
+    )
+  } else {
+    return Draft.convertFromRaw(text)
+  }
+}

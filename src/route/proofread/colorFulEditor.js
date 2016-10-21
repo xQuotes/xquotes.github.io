@@ -139,8 +139,8 @@ export default class ColorfulEditor extends React.Component {
         <Row className="proofread-main-btngroup">
           <Col span="2">
             字间距：
-            <Icon type="plus-circle-o" onClick={this.handleLineHeight.bind(this, 'plus')}/>
-            <Icon type="minus-circle-o" onClick={this.handleLineHeight.bind(this, 'minus')}/>
+            <Icon type="plus-circle-o" onClick={this.handleLetterSpacing.bind(this, 'plus')}/>
+            <Icon type="minus-circle-o" onClick={this.handleLetterSpacing.bind(this, 'minus')}/>
           </Col>
           <Col span="2">
             字高：

@@ -1,8 +1,7 @@
 import {
   inject, observer
 } from 'mobx-react'
-
-import {
+import Draft, {
   Editor, convertToRaw, RichUtils, 
   EditorState, ContentState,
   Modifier, convertFromHTML, convertFromRaw
@@ -11,6 +10,9 @@ import {
   Button
 } from 'antd'
 var ButtonGroup = Button.Group
+import {
+  convertText
+} from 'Utils'
 
 import './xqeditor.less'
 @observer
@@ -24,10 +26,7 @@ export default class XQEditor extends React.Component {
       // letterSpacing: 1,
       // editorState: EditorState.createEmpty()
       editorState: EditorState.createWithContent(
-        convertFromRaw(props.html)
-        // ContentState.createFromBlockArray(
-        //   convertFromHTML(props.html)
-        // )
+        convertText(props.html, Draft)
       )
     }
 
