@@ -21,7 +21,6 @@ export default class Proofread extends React.Component {
   }
   componentDidMount() {
     const { jingShuStore } = this.props
-    console.log(jingShuStore.text)
     !jingShuStore.text && jingShuStore.getTextServer()
   }
   onClick(text) {

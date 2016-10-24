@@ -15,15 +15,13 @@ import PicLines from './picLines'
 export default class JiaoPic extends React.Component {
   constructor(props) {
     super(props)
-
-    console.log(props.rectangleStore)
-    this.state = {
-      layouts: []
-    }
   }
   onAddItem() {
-    this.setState({
-      layouts: [...this.state.layouts, 30]
+    const {rectangleStore} = this.props
+    rectangleStore.addRectangle({
+      w: 36,
+      y: 0,
+      x: _.sumBy(rectangleStore.rectangles, 'w'),
     })
   }
   componentDidMount() {
@@ -34,14 +32,8 @@ export default class JiaoPic extends React.Component {
     const { rectangleStore } = this.props
 
   }
-  onRemoveItem(index) {
-    const {layouts} = this.state
-    let layout = _.clone(layouts)
-    layout.delete(index)
-  }
   render() {
     const {rectangleStore} = this.props
-    console.log(toJS(rectangleStore.rectangles))
     return(
       <div className="jiao-pic">
         <div className="jiao-pic-top">
@@ -53,7 +45,7 @@ export default class JiaoPic extends React.Component {
           </div>
           <div className="jiao-pic-group">
             <div className="jiao-pic-rowgroup">
-              {rectangleStore.rectangles.length && <PicLines layouts={rectangleStore.rectangles} onRemoveItem={::this.onRemoveItem}/>}
+              <PicLines />
             </div>
             <div className="jiao-pic-main">
               <img className="jiao-img"

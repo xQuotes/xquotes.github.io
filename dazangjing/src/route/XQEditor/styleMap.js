@@ -5,6 +5,7 @@ import {
   CompositeDecorator
 } from 'draft-js'
 
+
 export const bgColorStyleMap = {
   bgPurple: {
     backgroundColor: 'purple'
@@ -17,6 +18,10 @@ export const bgColorStyleMap = {
   },
   bgYellow: {
     backgroundColor: 'yellow'
+  },
+  // style
+  smallFont: {
+    fontSize: '12px'
   }
 }
 
@@ -27,7 +32,7 @@ export const BGCOLORS = [
   {type: 'bg', label: '难字', style: 'bgYellow'}
 ]
 
-class StyleButton extends React.Component {
+class BgButton extends React.Component {
   constructor(props) {
     super(props)
     this.onToggle = (e) => {
@@ -56,7 +61,7 @@ export class BgColorControls extends React.Component {
     return (
       <div className="editor-controls">
         {BGCOLORS.map((type, key) =>
-          <StyleButton
+          <BgButton
             key={key}
             active={currentStyle.has(type.style)}
             label={type.label}
@@ -68,35 +73,49 @@ export class BgColorControls extends React.Component {
   }
 }
 
-// ======
+export const STYLECOLORS = [
+  {type: 'style', label: '小字', style: 'smallFont'}
+]
 
-const HANDLE_REGEX = /\@[\w]+/g;
-const HASHTAG_REGEX = /\#[\w\u0590-\u05ff]+/g;
+class StyleButton extends React.Component {
+  constructor(props) {
+    super(props)
+    this.onToggle = (e) => {
+      e.preventDefault()
+      this.props.onToggle(this.props.style)
+    }
+  }
 
-export function handleStrategy(contentBlock, callback) {
-  findWithRegex(HANDLE_REGEX, contentBlock, callback);
-}
-
-export function hashtagStrategy(contentBlock, callback) {
-  findWithRegex(HASHTAG_REGEX, contentBlock, callback);
-}
-
-function findWithRegex(regex, contentBlock, callback) {
-  // console.log(contentBlock.getText())
-  const text = contentBlock.getText();
-  let matchArr, start;
-  while ((matchArr = regex.exec(text)) !== null) {
-    start = matchArr.index;
-    callback(start, start + matchArr[0].length);
+  render() {
+    let {active, label, style} = this.props
+    return (
+      <Button type="ghost" onMouseDown={this.onToggle}>
+        {this.props.label}
+      </Button>
+    );
   }
 }
 
-export const HandleSpan = (props) => {
-  return <span {...props} style={styles.handle}>{props.children}</span>;
-}
+export class StyleColorControls extends React.Component {
+  constructor(props) {
+    super(props)
+  }
 
-export const HashtagSpan = (props) => {
-  return <span {...props} style={styles.hashtag}>{props.children}</span>;
+  render() {
+    var currentStyle = this.props.editorState.getCurrentInlineStyle()
+    return (
+      <div className="editor-controls">
+        {STYLECOLORS.map((type, key) =>
+          <BgButton
+            key={key}
+            active={currentStyle.has(type.style)}
+            label={type.label}
+            onToggle={this.props.onToggle}
+            style={type.style}/>
+        )}
+      </div>
+    )
+  }
 }
 
 const styles = {

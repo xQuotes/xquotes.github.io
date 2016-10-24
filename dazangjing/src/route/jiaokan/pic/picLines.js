@@ -2,7 +2,7 @@ import {
   toJS
 } from 'mobx'
 import {
-  observer
+  inject, observer
 } from 'mobx-react'
 import {
   Button, Checkbox, Icon
@@ -11,48 +11,11 @@ var WidthProvider = require('react-grid-layout').WidthProvider
 var ReactGridLayout = require('react-grid-layout')
 ReactGridLayout = WidthProvider(ReactGridLayout)
 
-@observer
+@inject("rectangleStore") @observer
 export default class PicLines extends React.Component {
   constructor(props) {
     super(props)
-    console.log(props.layouts)
-    this.state = {
-      layout: toJS(props.layouts)
-      // _.map(props.layouts, (v, k) => {
-      //   return {
-      //     i: k+'',
-      //     w: v,
-      //     h: 1,
-      //     maxH: 1,
-      //     y: 0,
-      //     x: _.sum(_.dropRight(props.layouts, props.layouts.length-k))
-      //   }
-      // })
-    }
   }
-  // componentWillReceiveProps(nextProps) {
-  //   const {layouts: oldLayouts} = this.props
-  //   const {layouts: newLayouts} = nextProps
-
-  //   if(oldLayouts != newLayouts) {
-  //     let layout = []
-
-  //     layout = _.map(newLayouts, (v, k) => {
-  //       return {
-  //         i: k+'',
-  //         w: v,
-  //         h: 1,
-  //         maxH: 1,
-  //         y: 0,
-  //         x: _.sum(_.dropRight(newLayouts, newLayouts.length-k))
-  //       }
-  //     })
-
-  //     this.setState({
-  //       layout: layout
-  //     })
-  //   }
-  // }
   onResize(layout,
                 oldItem,
                 newItem,
@@ -68,21 +31,6 @@ export default class PicLines extends React.Component {
       layoutData[parseInt(newItem.i)+1].w = lastItem.w - (newItem.w - oldItem.w)
     }
 
-    // layoutDatas[newItem.i] = newItem
-    // layoutDatas = layoutData
-    // _.map(layoutData, (v, k) => {
-    //   return {
-    //     i: k+'',
-    //     w: v.w,
-    //     h: 1,
-    //     maxH: 1,
-    //     y: 0,
-    //     x: _.sumBy(_.dropRight(layoutData, layoutData.length-k), 'w')
-    //   }
-    // })
-    this.setState({
-      layout: layoutData
-    })
 
   }
   render() {
@@ -98,20 +46,16 @@ export default class PicLines extends React.Component {
       isDraggable: false,
       onResizeStop: that.onResize.bind(that)
     }
-    const { layout } = this.state
-    console.log(layout)
-    const {onRemoveItem} = this.props
-    
+    const {rectangleStore} = this.props
     return(
       <div className="pic-lines">
         <ReactGridLayout
           {...styles}
-          layout={layout}>
-          {_.map(layout, (value, key)=> {
-            console.log(value)
-            return <div key={value.i} className="pic-line">
+          layout={rectangleStore.rectangles.toJS()}>
+          {_.map(rectangleStore.rectangles, (rectangle, key)=> {
+            return <div key={rectangle.i} className="pic-line">
               <div className="pic-line-close">
-                <Icon type="close" onClick={onRemoveItem.bind(that, value.i)}/>
+                <Icon type="close" onClick={rectangle.destroy.bind(rectangle)}/>
               </div>
               <div className="pic-line-checkbox">
                 <Checkbox></Checkbox>

@@ -4,7 +4,8 @@ import {
 import Draft, {
   Editor, convertToRaw, RichUtils, 
   EditorState, ContentState,
-  Modifier, convertFromHTML, convertFromRaw
+  Modifier, convertFromHTML, convertFromRaw,
+  CompositeDecorator
 } from 'draft-js'
 import {
   Button
@@ -13,6 +14,14 @@ var ButtonGroup = Button.Group
 import {
   convertText
 } from 'Utils'
+import {
+  handleStrategy,
+  CharactorSpan,
+  handlAngleBracket,
+  AngleBrachetSpan,
+  handlVertialLine,
+  VertialLineSpan
+} from './point'
 
 import './xqeditor.less'
 @observer
@@ -20,13 +29,25 @@ export default class XQEditor extends React.Component {
   constructor(props) {
     super(props)
 
+    const compositeDecorator = new CompositeDecorator([
+      {
+        strategy: handleStrategy,
+        component: CharactorSpan
+      },
+      {
+        strategy: handlAngleBracket,
+        component: AngleBrachetSpan
+      }
+    ])
+
     this.state = {
       // family: 'Microsoft YaHei',
       // lineHeight: 60,
       // letterSpacing: 1,
       // editorState: EditorState.createEmpty()
       editorState: EditorState.createWithContent(
-        convertText(props.html, Draft)
+        convertText(props.html, Draft),
+        compositeDecorator
       )
     }
 
@@ -48,9 +69,9 @@ export default class XQEditor extends React.Component {
     const newState = RichUtils.handleKeyCommand(editorState, command)
     if (newState) {
       this.onChange(newState)
-      return true
+      return 'handled'
     }
-    return false
+    return 'not-handled'
   }
   render() {
     const {editorState, bar} = this.state

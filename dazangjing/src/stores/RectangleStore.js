@@ -17,34 +17,38 @@ export default class RectangleStore {
       method: 'get',
       success: (data) => {
         this.isLoading = false
-        this.rectangles = data.rectangles
+        this.rectangles = _.map(JSON.parse(data.rectangles), (rectangle) => {
+          this.addRectangle(rectangle)
+        })
       },
       error: (data) => {
         this.isLoading = false
-        this.rectangles = data.rectangles
       }
     })
   }
 
   addRectangle (formData) {
-    this.todos.push(new TodoModel(this,
-      id= Utils.uuid(),
-      w= formData.w,
-      h= formData.h || 1,
-      maxH= formData.maxH || 1,
-      y= formData.y,
-      x= formData.x,
-      del= formData.del || false
+    this.rectangles.push(new RectangleModel(this,
+      Utils.uuid(),
+      formData.w,
+      formData.h || 1,
+      formData.maxH || 1,
+      formData.y,
+      formData.x,
+      formData.del || false
     ))
   }
 
-  // toJS() {
-  //   return this.rectangles.map(rectangle => rectangle.toJS());
-  // }
+  toJS() {
+    return this.rectangles.map(rectangle => rectangle.toJS());
+  }
 
   static fromJS(array = []) {
     const rectangleStore = new RectangleStore()
-    // rectangleStore.rectangles = array.map(item => RectangleModel.fromJS(rectangleStore, item))
+    console.log(rectangleStore)
+    rectangleStore.rectangles = array.map(item => RectangleModel.fromJS(rectangleStore, item))
+
+    console.log(rectangleStore)
     return rectangleStore
   }
 }

@@ -6,7 +6,7 @@ const Option = Select.Option
 import {
   Editor, EditorState, ContentState, convertToRaw,
   RichUtils, Modifier, cohnvertFromHTML, convertFromRaw,
-  CompositeDecorator
+  CompositeDecorator, DefaultDraftBlockRenderMap
 } from 'draft-js'
 
 import './proofread.less'
@@ -15,11 +15,18 @@ import {
   BgColorControls,
   bgColorStyleMap,
 
+  StyleColorControls,
+  styleColorStyleMap,
+
   handleStrategy,
   hashtagStrategy,
   HandleSpan,
   HashtagSpan
 } from '../XQEditor/styleMap'
+import {
+  BlockControls,
+  blockRenderMap
+} from '../XQEditor/blockMap'
 
 export default class ColorfulEditor extends React.Component {
   constructor(props) {
@@ -37,7 +44,7 @@ export default class ColorfulEditor extends React.Component {
         component: HashtagSpan,
       }
     ])
-    console.log(rawContent)
+    
     this.state = {
       family: 'Microsoft YaHei',
       lineHeight: 60,
@@ -57,6 +64,7 @@ export default class ColorfulEditor extends React.Component {
 
     this.toggleColor = (toggledColor) => this._toggleColor(toggledColor)
     this.toggleAllStyle = (toggledStyle) => this._toggleAllStyle(toggledStyle)
+    this.toggleBlockType = (toggledStyle) => this._toggleBlockType(toggledStyle)
 
     this.logState = () => {
       const content = this.state.editorState.getCurrentContent()
@@ -74,6 +82,14 @@ export default class ColorfulEditor extends React.Component {
       return true
     }
     return false
+  }
+  _toggleBlockType(blockType) {
+    this.onChange(
+      RichUtils.toggleBlockType(
+        this.state.editorState,
+        blockType
+      )
+    );
   }
 
   _toggleColor(toggledColor) {
@@ -134,6 +150,8 @@ export default class ColorfulEditor extends React.Component {
     const {
       family, lineHeight, letterSpacing, editorState
     } = this.state
+    const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(blockRenderMap)
+
     return (
       <div className="editor-root">
         <Row className="proofread-main-btngroup">
@@ -160,6 +178,16 @@ export default class ColorfulEditor extends React.Component {
             <BgColorControls
               editorState={editorState}
               onToggle={this.toggleColor}/>
+          </Col>
+          <Col span="8">
+            <StyleColorControls
+              editorState={editorState}
+              onToggle={this.toggleColor}/>
+          </Col>
+          <Col span="8">
+            <BlockControls
+              editorState={editorState}
+              onToggle={this.toggleBlockType}/>
           </Col>
         </Row>
         <Row>
@@ -237,6 +265,7 @@ export default class ColorfulEditor extends React.Component {
                 handleKeyCommand={::this.handleKeyCommand}
                 editorState={editorState}
                 onChange={this.onChange}
+                blockRenderMap={extendedBlockRenderMap}
                 placeholder=""
                 ref="editor"/>
             </div>

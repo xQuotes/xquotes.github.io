@@ -2,7 +2,7 @@ import {observable} from 'mobx';
 
 export default class RectangleModel {
   store;
-  id;
+  i;
   @observable w;
   @observable h;
   @observable maxH;
@@ -13,7 +13,7 @@ export default class RectangleModel {
 
   constructor(store, i, w, h, maxH, y, x, del) {
     this.store = store;
-    this.id = id;
+    this.i = i;
     this.w = w;
     this.h = h;
     this.maxH = maxH;
@@ -24,7 +24,9 @@ export default class RectangleModel {
   }
 
   destroy() {
+    console.log(this.del)
     this.del = !this.del
+    console.log(this.del)
   }
 
   update(formData) {
@@ -37,7 +39,7 @@ export default class RectangleModel {
 
   toJS() {
     return {
-      id: this.id,
+      i: this.i,
       w: this.w,
       h: this.h,
       maxH: this.maxH,
@@ -50,7 +52,7 @@ export default class RectangleModel {
   static fromJS(store, object) {
     return new RectangleModel(
       store,
-      object.id,
+      object.i,
       object.w,
       object.h,
       object.maxH,
