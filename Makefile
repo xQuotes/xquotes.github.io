@@ -1,5 +1,5 @@
 deploy:
-	cd dazangjing && npm run production
+	cd longquansi && npm run production
 	mv dist/index.html index.html
 	git add .
 	git commit -m "deploy"
