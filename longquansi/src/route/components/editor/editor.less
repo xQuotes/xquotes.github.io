@@ -1,0 +1,55 @@
+/*
+  horizontal-tb (to to bottom)
+  vertical-rl (right to left)
+  vertical-lr (left to right)
+*/
+.xqeditor {
+  border: 1px solid #ddd;
+  padding: 10px;
+  outline:none;
+  min-height: 450px;
+}
+.vertical-rl {
+  .DraftEditor-editorContainer {
+    writing-mode: vertical-rl; 
+  }
+}
+.horizontal-tb {
+  .DraftEditor-editorContainer {
+    writing-mode: horizontal-tb;
+  }
+}
+.vertical-lr {
+  .DraftEditor-editorContainer {
+    writing-mode: horizontal-lr;
+  }
+}
+
+.bgPurple-square,
+.bgBlue-square,
+.bgOrange-square,
+.bgYellow-square {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: #ddd;
+}
+.bgPurple-square {
+  background-color: purple;
+
+}
+.bgBlue-square {
+  background-color: blue;
+}
+.bgOrange-square {
+  background-color: orange;
+}
+.bgYellow-square {
+  background-color: yellow;
+}
+.smallFont-square {
+  font-size: 12px;
+}
+.charactor-span {
+  display: none;
+}
