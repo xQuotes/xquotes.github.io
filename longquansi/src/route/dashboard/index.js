@@ -15,6 +15,8 @@ import './dashboard.less'
 
 import Url from 'Url'
 
+import Yunchuli from '../dazangjing/yuchuli/'
+
 @inject(
   'dashboardStore'
 )
@@ -54,7 +56,7 @@ export default class Dashboard extends React.Component {
             </div>
             <div className="ant-layout-content">
               <div style={{ height: '100%' }}>
-                {this.props.children}
+                {this.props.children || <Yunchuli />}
               </div>
             </div>
           </div>
