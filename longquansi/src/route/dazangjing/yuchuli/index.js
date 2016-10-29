@@ -42,11 +42,10 @@ export default class Yunchuli extends React.Component {
             <div className="yuchuli-btngroup yuchuli-btngroup-right">
               <div className="ant-btn ant-btn-ghost ant-btn-lg">
                 切列字数: 
-                <Select defaultValue="1" style={{ width: 45 }}>
-                  <Option value="1">1</Option>
-                  <Option value="2">2</Option>
-                  <Option value="3">3</Option>
-                  <Option value="4">4</Option>
+                <Select defaultValue="5" style={{ width: 45 }}>
+                  {_.map(_.range(5, 20), (v, k) => {
+                    return <Option value={v+''} key={k}>{v}</Option>
+                  })}
                 </Select>
               </div>
               <Button type="ghost" size="large">插入分页符</Button>
@@ -65,6 +64,9 @@ export default class Yunchuli extends React.Component {
             </div>
             <div className="yuchuli-text">
               <JinshuText />
+              <div className="yuchuli-upload-btn">
+                <Button type="ghost" className="vertical-btn">上传文本</Button>
+              </div>
             </div>
           </div>
         </div>
