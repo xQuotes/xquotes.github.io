@@ -24,17 +24,18 @@ export default class JiaoText extends React.Component {
     // zangjingStore.getTextServer()
   }
   handleSubmit() {
-    const { zangjingStore } = this.props
-    const text = toJS(zangjingStore).text
-    zangjingStore.putTextServer({text})
+    // const { zangjingStore } = this.props
+    // const text = toJS(zangjingStore).text
+    // zangjingStore.putTextServer({text})
   }
   onClick(text) {
-    const { zangjingStore } = this.props
-    zangjingStore.saveText({text})
+    console.log(text)
+    // const { zangjingStore } = this.props
+    // zangjingStore.saveText({text})
   }
   render() {
     const {zangjingStore} = this.props
-    zangjingStore.text = '大藏经'
+    // zangjingStore.text = '大藏经'
     return(
       <div className="jiao-text-main horizontal-tb">
         <XQEditor html={zangjingStore.text} onClick={::this.onClick}/>
